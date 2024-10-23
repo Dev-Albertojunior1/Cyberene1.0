@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f855e6bc.css",
+    "main.js": "/static/js/main.d627699c.js",
+    "static/js/453.6954f275.chunk.js": "/static/js/453.6954f275.chunk.js",
+    "static/media/image3.jpeg": "/static/media/image3.d5fe70c0ea16f2e90216.jpeg",
+    "static/media/image2.jpeg": "/static/media/image2.aab9b6b39cdca3ca7fcd.jpeg",
+    "static/media/image4.jpeg": "/static/media/image4.49b8e4b776bbc4a6192e.jpeg",
+    "static/media/logo.png": "/static/media/logo.6733147b81e9c56a35fb.png",
+    "static/media/img1.jpeg": "/static/media/img1.cccf7c3a8bde68f7fb1c.jpeg",
+    "static/media/Anu-logo.webp": "/static/media/Anu-logo.e28649dd95f6554a04a3.webp",
+    "index.html": "/index.html",
+    "main.f855e6bc.css.map": "/static/css/main.f855e6bc.css.map",
+    "main.d627699c.js.map": "/static/js/main.d627699c.js.map",
+    "453.6954f275.chunk.js.map": "/static/js/453.6954f275.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.d627699c.js"
+  ]
+}
