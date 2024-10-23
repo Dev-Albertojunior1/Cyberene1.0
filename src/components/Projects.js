@@ -41,7 +41,7 @@ export default function Projects() {
               transition="transform 0.2s, box-shadow 0.2s" // Transição suave
               _hover={{
                 transform: 'translateY(-5px)', // Move para cima
-                boxShadow: '0 4px 20px rgba(255, 0, 0, 0.6)', // Sombra vermelha ao passar o mouse
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.6)", // Sombra vermelha ao passar o mouse
               }}
             >
               <Image src={project.image} alt={project.title} height={200} objectFit="cover" />

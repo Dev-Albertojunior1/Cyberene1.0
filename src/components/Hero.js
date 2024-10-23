@@ -1,41 +1,98 @@
-import React from 'react';
-import { Box, Container, Heading, Text, Button, Flex, Icon, Link } from '@chakra-ui/react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; // Importando ícones de redes sociais
+import React, { useState, useEffect } from 'react';
+import { Box, Container, Heading, Text, Button, Flex, Icon, Link, Image } from '@chakra-ui/react';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import logo from "../images/logo.png";
+import { useSpring, animated } from 'react-spring';
+
+const texts = [
+  "Empowering the next generation of tech innovators",
+  "Inspiring creativity and innovation",
+  "Building a better tomorrow with technology",
+  "Join us in the journey of digital transformation"
+];
 
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+
+  // Controla o índice do texto
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    }, 3000); // Troca a cada 3 segundos
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animação do texto
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    reset: true,
+    config: { duration: 500 }
+  });
 
   return (
-    <Box bg="#ff0000" color="white" py={{ base: 24, md: 48 }} position="relative">
+    <Box bg="#ff0000" color="white" py={{ base: 12, md: 48 }} position="relative">
       <Container maxW="container.xl" textAlign="center">
-        <Heading as="h2" size="3xl" mb={4}>
-          Welcome to Cyberene
-        </Heading>
-        <Text fontSize={{ base: 'xl', md: '2xl' }} mb={8}>
-          Empowering the next generation of tech innovators
-        </Text>
-        <Button
-          size="lg"
-          bg="black"
-          borderRadius="30px"
-          color="white"
-          _hover={{ bg: "blue.600", transform: "scale(1.05)" }}
-          _active={{ bg: "blue.700" }}
-          py={{ base: 4, md: 6 }}
+        <Flex
+          flexDirection={{ base: "column", md: "row" }}
+          alignItems="center"
+          justifyContent="space-between"
+          mt={{ base: -10, md: 0 }}
         >
-          Join Us
-        </Button>
+          {/* Imagem à esquerda */}
+          <Box 
+            flex="1" 
+            display="flex"
+            justifyContent="center"
+            mb={{ base: 0, md: 0 }}
+          >
+            <Image 
+              src={logo}
+              alt="Imagem Descritiva"
+              maxW={{ base: "80%", md: "400px" }}
+              borderRadius="md"
+            />
+          </Box>
 
-        {/* Ícones de redes sociais com links */}
-        <Flex justify="center" mt={6} gap={4}>
-          <Link href="https://www.facebook.com" isExternal>
-            <Icon as={FaFacebook} w={8} h={8} color="#4267B2" _hover={{ transform: "scale(1.1)" }} />
-          </Link>
-          <Link href="https://www.twitter.com" isExternal>
-            <Icon as={FaTwitter} w={8} h={8} color="#1DA1F2" _hover={{ transform: "scale(1.1)" }} />
-          </Link>
-          <Link href="https://www.instagram.com" isExternal>
-            <Icon as={FaInstagram} w={8} h={8} color="pink" _hover={{ transform: "scale(1.1)" }} />
-          </Link>
+          {/* Conteúdo textual à direita */}
+          <Box flex="1" textAlign={{ base: "center", md: "left" }}>
+            <Heading as="h2" size="3xl" mb={4}>
+              Welcome to Cyberene
+            </Heading>
+            <animated.div style={props}>
+              <Text fontSize={{ base: 'xl', md: '2xl' }} mb={8}>
+                {texts[index]}
+              </Text>
+            </animated.div>
+            <Button
+              size="lg"
+              bg="black"
+              borderRadius="30px"
+              color="white"
+              _hover={{ bg: "blue.600", transform: "scale(1.05)" }}
+              _active={{ bg: "blue.700" }}
+              py={{ base: 4, md: 6 }}
+            >
+              Join Us
+            </Button>
+
+            {/* Ícones de redes sociais com links */}
+            <Flex 
+              justify={{ base: "center", md: "flex-start" }} 
+              mt={6} 
+              gap={4}
+            >
+              <Link href="https://www.facebook.com" isExternal>
+                <Icon as={FaFacebook} w={8} h={8} color="#4267B2" _hover={{ transform: "scale(1.1)" }} />
+              </Link>
+              <Link href="https://www.twitter.com" isExternal>
+                <Icon as={FaTwitter} w={8} h={8} color="#1DA1F2" _hover={{ transform: "scale(1.1)" }} />
+              </Link>
+              <Link href="https://www.instagram.com" isExternal>
+                <Icon as={FaInstagram} w={8} h={8} color="pink" _hover={{ transform: "scale(1.1)" }} />
+              </Link>
+            </Flex>
+          </Box>
         </Flex>
       </Container>
 
