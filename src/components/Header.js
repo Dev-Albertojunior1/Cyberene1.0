@@ -23,6 +23,15 @@ import logo from "../images/Anu-logo.webp";
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const handleScroll = (event, targetId) => {
+    event.preventDefault(); // Previne o comportamento padrão do link
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      onClose(); // Fecha o menu do drawer após clicar
+    }
+  };
+
   return (
     <>
       <Box as="header" bg="#fac823" boxShadow="sm" position="sticky" top={0} zIndex={10}>
@@ -35,7 +44,7 @@ export default function Header() {
                 height={{ base: '30px', md: '50px' }} // Reduz o tamanho da logo no mobile
                 mr={2} // Espaçamento à direita da logo
               />
-               <Divider orientation="vertical" height="40px" mx={2} borderColor="black" />
+              <Divider orientation="vertical" height="40px" mx={2} borderColor="black" />
               <Heading as="h1" size={{ base: 'md', md: 'lg' }} color="black">
                 Cyberene
               </Heading>
@@ -49,6 +58,7 @@ export default function Header() {
                   mx={3} 
                   fontWeight="medium" 
                   color="black"
+                  onClick={(e) => handleScroll(e, item.toLowerCase())} // Adiciona o manipulador de rolagem
                   _hover={{ textDecoration: 'underline', color: 'blue.300' }} // Efeito de hover
                 >
                   {item}
@@ -60,9 +70,9 @@ export default function Header() {
               icon={<HamburgerIcon />}
               display={{ base: 'flex', md: 'none' }}
               onClick={onOpen}
-              bg={"yellow"}
+              bg={"#fac823"}
               color="black"
-              _hover={{ bg: 'gray.700' }} // Efeito de hover para o botão
+              _hover={{ bg: 'red' }} // Efeito de hover para o botão
             />
           </Flex>
         </Container>
@@ -79,7 +89,7 @@ export default function Header() {
                 <Link 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 
-                  onClick={onClose} 
+                  onClick={(e) => handleScroll(e, item.toLowerCase())} // Adiciona o manipulador de rolagem
                   color="black" 
                   _hover={{ textDecoration: 'underline', color: 'blue.300' }} // Efeito de hover
                 >
