@@ -1,27 +1,35 @@
 import React from 'react';
 import { Box, Container, Heading, Text, SimpleGrid, Card, CardBody, CardFooter, Button, Image } from '@chakra-ui/react';
+import img1 from "../images/img1.jpeg"; 
+import img2 from "../images/image2.jpeg";
+import img3 from "../images/image3.jpeg";
+import img4 from "../images/image4.jpeg";
 
 export default function Projects() {
   const projects = [
     {
       title: 'Smart Campus App',
       description: 'A mobile app to help students navigate the campus and access resources',
-      image: '/placeholder.svg?height=200&width=400',
+      image: img1,
+      link: 'https://www.youtube.com/watch?v=example1', // Link externo para o YouTube
     },
     {
       title: 'AI Study Buddy',
       description: 'An AI-powered chatbot to assist students with their studies',
-      image: '/placeholder.svg?height=200&width=400',
+      image: img2,
+      link: 'https://www.youtube.com/watch?v=example2', // Link externo para o YouTube
     },
     {
       title: 'Green Tech Initiative',
       description: 'Developing sustainable technology solutions for the campus',
-      image: '/placeholder.svg?height=200&width=400',
+      image: img3,
+      link: 'https://www.youtube.com/watch?v=example3', // Link externo para o YouTube
     },
     {
       title: 'Cybersecurity Awareness Game',
       description: 'An interactive game to teach students about online safety',
-      image: '/placeholder.svg?height=200&width=400',
+      image: img4,
+      link: 'https://www.youtube.com/watch?v=example4', // Link externo para o YouTube
     },
   ];
 
@@ -35,16 +43,23 @@ export default function Projects() {
           {projects.map((project, index) => (
             <Card
               key={index}
-              border="1px" // Define a borda
-              borderColor="grey" // Cor da borda
-              boxShadow="md" // Sombra padrão
-              transition="transform 0.2s, box-shadow 0.2s" // Transição suave
+              border="1px"
+              borderColor="gray.300"
+              borderRadius="lg"
+              boxShadow="lg"
+              transition="transform 0.2s, box-shadow 0.2s"
               _hover={{
-                transform: 'translateY(-5px)', // Move para cima
-                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.6)", // Sombra vermelha ao passar o mouse
+                transform: 'translateY(-5px)',
+                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <Image src={project.image} alt={project.title} height={200} objectFit="cover" />
+              <Image
+                src={project.image}
+                alt={project.title}
+                height={200}
+                width="100%"
+                objectFit="cover"
+              />
               <CardBody>
                 <Heading size="md" mb={2}>
                   {project.title}
@@ -52,7 +67,18 @@ export default function Projects() {
                 <Text>{project.description}</Text>
               </CardBody>
               <CardFooter>
-                <Button variant="outline" colorScheme="red">
+                <Button 
+                  as="a"
+                  href={project.link}
+                  target="_blank" // Abre em nova aba
+                  rel="noopener noreferrer" // Segurança adicional
+                  variant="solid" 
+                  colorScheme="red"
+                  bg="red.500"
+                  color="white"
+                  borderRadius="30px"
+                  _hover={{ bg: 'red.600' }}
+                >
                   Learn More
                 </Button>
               </CardFooter>
