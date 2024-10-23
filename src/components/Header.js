@@ -14,20 +14,33 @@ import {
   DrawerCloseButton,
   VStack,
   useDisclosure,
+  Image,
+  Divider
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import logo from "../images/Anu-logo.webp";
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box as="header" bg="black" boxShadow="sm" position="sticky" top={0} zIndex={10}>
+      <Box as="header" bg="#fac823" boxShadow="sm" position="sticky" top={0} zIndex={10}>
         <Container maxW="container.xl">
           <Flex py={4} justifyContent="space-between" alignItems="center">
-            <Heading as="h1" size="lg" color="white">
-              Cyberene
-            </Heading>
+            <Flex alignItems="center">
+              <Image 
+                src={logo} 
+                alt="Logo" 
+                height={{ base: '30px', md: '50px' }} // Reduz o tamanho da logo no mobile
+                mr={2} // Espaçamento à direita da logo
+              />
+               <Divider orientation="vertical" height="40px" mx={2} borderColor="black" />
+              <Heading as="h1" size={{ base: 'md', md: 'lg' }} color="black">
+                Cyberene
+              </Heading>
+            </Flex>
+            
             <Flex display={{ base: 'none', md: 'flex' }}>
               {['About', 'Events', 'Projects', 'Team', 'Contact'].map((item) => (
                 <Link 
@@ -35,7 +48,7 @@ export default function Header() {
                   href={`#${item.toLowerCase()}`} 
                   mx={3} 
                   fontWeight="medium" 
-                  color="white"
+                  color="black"
                   _hover={{ textDecoration: 'underline', color: 'blue.300' }} // Efeito de hover
                 >
                   {item}
@@ -47,7 +60,8 @@ export default function Header() {
               icon={<HamburgerIcon />}
               display={{ base: 'flex', md: 'none' }}
               onClick={onOpen}
-              color="white"
+              bg={"yellow"}
+              color="black"
               _hover={{ bg: 'gray.700' }} // Efeito de hover para o botão
             />
           </Flex>

@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Container, Heading, Text, Button, Text as ChakraText, Flex, Icon } from '@chakra-ui/react';
-import { FaUsers } from 'react-icons/fa'; // Importando o ícone de usuários
+import React from 'react';
+import { Box, Container, Heading, Text, Button, Flex, Icon, Link } from '@chakra-ui/react';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; // Importando ícones de redes sociais
 
 export default function Hero() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prevCount) => (prevCount < 100 ? prevCount + 1 : prevCount));
-    }, 110); // Ajuste a velocidade do contador aqui
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <Box bg="#ff0000" color="white" py={{ base: 24, md: 48 }} position="relative">
@@ -34,24 +25,17 @@ export default function Hero() {
           Join Us
         </Button>
 
-        {/* Contador de Membros */}
-        <Flex 
-          align="center" 
-          justify="center" 
-          mt={6} 
-          bg="rgba(255, 255, 255, 0.1)" // Fundo semi-transparente
-          borderRadius="15px" 
-          p={2} // Reduzindo o padding
-          boxShadow="md" // Sombra mais leve
-          transition="transform 0.2s"
-          _hover={{ transform: "scale(1.05)" }} // Efeito de hover
-          maxW={{ base: '80%', md: '300px' }} // Largura máxima para telas pequenas
-          mx="auto" // Centraliza horizontalmente
-        >
-          <Icon as={FaUsers} w={5} h={5} color="white" mr={2} /> {/* Ícone de usuários */}
-          <ChakraText fontSize={{ base: 'lg', md: 'xl' }} color="white">
-            Members: {count}
-          </ChakraText>
+        {/* Ícones de redes sociais com links */}
+        <Flex justify="center" mt={6} gap={4}>
+          <Link href="https://www.facebook.com" isExternal>
+            <Icon as={FaFacebook} w={8} h={8} color="#4267B2" _hover={{ transform: "scale(1.1)" }} />
+          </Link>
+          <Link href="https://www.twitter.com" isExternal>
+            <Icon as={FaTwitter} w={8} h={8} color="#1DA1F2" _hover={{ transform: "scale(1.1)" }} />
+          </Link>
+          <Link href="https://www.instagram.com" isExternal>
+            <Icon as={FaInstagram} w={8} h={8} color="pink" _hover={{ transform: "scale(1.1)" }} />
+          </Link>
         </Flex>
       </Container>
 

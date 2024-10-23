@@ -1,10 +1,45 @@
-import React from 'react'
-import { Box, Container, Heading, Text, SimpleGrid, Card, CardBody } from '@chakra-ui/react'
+
+import React, { useEffect, useState } from 'react';
+import { Box, Container, Heading, Text, SimpleGrid, Card, CardBody, Icon,Flex, Text as ChakraText } from '@chakra-ui/react'
+import { FaUsers } from 'react-icons/fa';
 
 export default function About() {
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => (prevCount < 100 ? prevCount + 1 : prevCount));
+    }, 110); // Ajuste a velocidade do contador aqui
+
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
     <Box as="section" id="about" py={{ base: 16, md: 24 }}>
       <Container maxW="container.xl">
+        {/* Contador de Membros */}
+        <Flex 
+          align="center" 
+          justify="center" 
+          mt={-12} 
+          fontWeight={"bold"}
+          mb={10}
+          bg="#fac823" // Fundo semi-transparente
+          borderRadius="15px" 
+          p={2} // Reduzindo o padding
+          boxShadow="md" // Sombra mais leve
+          transition="transform 0.2s"
+          _hover={{ transform: "scale(1.05)" }} // Efeito de hover
+          maxW={{ base: '80%', md: '300px' }} // Largura máxima para telas pequenas
+          mx="auto" // Centraliza horizontalmente
+        >
+          <Icon as={FaUsers} w={5} h={5} color="black" mr={2} /> {/* Ícone de usuários */}
+          <ChakraText fontSize={{ base: 'lg', md: 'xl' }} color="black">
+            Members: {count}
+          </ChakraText>
+        </Flex>
         <Heading as="h2" size="xl" mb={8} textAlign="center">
           About Us
         </Heading>

@@ -30,8 +30,9 @@ export default function Events() {
           {events.map((event, index) => (
             <Card
               key={index}
+              bg={""}
               border="2px" // Define a borda
-              borderColor="red.500" // Cor da borda
+              borderColor="grey" // Cor da borda
               boxShadow="md" // Sombra padrão
               transition="transform 0.2s, box-shadow 0.2s" // Transição suave
               _hover={{
@@ -39,17 +40,17 @@ export default function Events() {
                 boxShadow: '0 4px 20px rgba(255, 0, 0, 0.6)', // Sombra vermelha ao passar o mouse
               }}
             >
-              <CardBody>
+              <CardBody >
                 <Heading size="md" mb={2}>
                   {event.title}
                 </Heading>
-                <Text color="gray.500" mb={2}>
+                <Text color="red" mb={2}>
                   {event.date}
                 </Text>
                 <Text>{event.description}</Text>
               </CardBody>
               <CardFooter>
-                <Button variant="outline" colorScheme="red">
+                <Button variant="outline" colorScheme="red" bg={"yellow"} color={"black"} borderColor="white" borderRadius={"20px"} >
                   Register
                 </Button>
               </CardFooter>
