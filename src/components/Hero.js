@@ -10,7 +10,7 @@ const texts = [
   "Building a better tomorrow with technology",
   "Join us in the journey of digital transformation"
 ];
-               
+
 // Criando um componente animado que utiliza o Chakra Text
 const AnimatedText = motion(Text);
 
@@ -18,7 +18,7 @@ export default function Hero() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {   
+    const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % texts.length);
     }, 3000); // Troca a cada 3 segundos
     return () => clearInterval(interval);
@@ -54,10 +54,10 @@ export default function Hero() {
             <AnimatedText 
               fontSize={{ base: 'xl', md: '2xl' }} 
               mb={8}
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              exit={{ opacity: 0 }} 
-              transition={{ duration: 0.5 }} // Duração da animação
+              initial={{ opacity: 0, y: 20 }} // Começa mais baixo
+              animate={{ opacity: 1, y: 0 }} // Animação para posição original
+              exit={{ opacity: 0, y: -20 }} // Sai para cima
+              transition={{ duration: 0.8 }} // Aumenta a duração da animação
             >
               {texts[index]}
             </AnimatedText>
