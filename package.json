@@ -1,6 +1,6 @@
 {
   "name": "cybarene",
-  "homepage": "https://cyberene.tech",
+  "homepage": "http://cyberene.tech",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",    
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.1"
+    "@types/react-dom": "^18.3.1",
+    "gh-pages": "^6.2.0"
   }
 }
