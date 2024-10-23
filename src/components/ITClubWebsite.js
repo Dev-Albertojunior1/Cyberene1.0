@@ -33,7 +33,7 @@ import { FaLinkedin, FaTwitter, FaGithub, FaFacebook, FaInstagram } from 'react-
 
 const theme = extendTheme({
   styles: {
-    global: {
+    global: {     
       body: {
         bg: 'gray.100',
       },
