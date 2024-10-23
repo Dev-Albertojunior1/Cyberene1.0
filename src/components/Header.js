@@ -1,106 +1,95 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Container, Heading, Text, Button, Flex, Icon, Link, Image } from '@chakra-ui/react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
-import logo from "../images/logo.png";
-import { motion } from 'framer-motion';
+import React from 'react';
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Link,
+  IconButton,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  VStack,
+  useDisclosure,
+  Image,
+  Divider
+} from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
+import logo from "../images/Anu-logo.webp";
 
-const texts = [
-  "Empowering the next generation of tech innovators",
-  "Inspiring creativity and innovation",
-  "Building a better tomorrow with technology",
-  "Join us in the journey of digital transformation"
-];
-               
-// Criando um componente animado que utiliza o Chakra Text
-const AnimatedText = motion(Text);
-
-export default function Hero() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {   
-      setIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 3000); // Troca a cada 3 segundos
-    return () => clearInterval(interval);
-  }, []);
+export default function Header() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box bg="#ff0000" color="white" py={{ base: 12, md: 48 }} position="relative">
-      <Container maxW="container.xl" textAlign="center">
-        <Flex
-          flexDirection={{ base: "column", md: "row" }}
-          alignItems="center"
-          justifyContent="space-between"
-          mt={{ base: -10, md: 0 }}
-        >
-          <Box 
-            flex="1" 
-            display="flex"
-            justifyContent="center"
-            mb={{ base: 0, md: 0 }}
-          >
-            <Image 
-              src={logo}
-              alt="Imagem Descritiva"
-              maxW={{ base: "80%", md: "400px" }}
-              borderRadius="md"
-            />
-          </Box>
-
-          <Box flex="1" textAlign={{ base: "center", md: "left" }}>
-            <Heading as="h2" size="3xl" mb={4}>
-              Welcome to Cyberene
-            </Heading>
-            <AnimatedText 
-              fontSize={{ base: 'xl', md: '2xl' }} 
-              mb={8}
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              exit={{ opacity: 0 }} 
-              transition={{ duration: 0.5 }} // Duração da animação
-            >
-              {texts[index]}
-            </AnimatedText>
-            <Button
-              size="lg"
-              bg="black"
-              borderRadius="30px"
-              color="white"
-              _hover={{ bg: "blue.600", transform: "scale(1.05)" }}
-              _active={{ bg: "blue.700" }}
-              py={{ base: 4, md: 6 }}
-            >
-              Join Us
-            </Button>
-
-            <Flex 
-              justify={{ base: "center", md: "flex-start" }} 
-              mt={6} 
-              gap={4}
-            >
-              <Link href="https://www.facebook.com" isExternal>
-                <Icon as={FaFacebook} w={8} h={8} color="#4267B2" _hover={{ transform: "scale(1.1)" }} />
-              </Link>
-              <Link href="https://www.twitter.com" isExternal>
-                <Icon as={FaTwitter} w={8} h={8} color="#1DA1F2" _hover={{ transform: "scale(1.1)" }} />
-              </Link>
-              <Link href="https://www.instagram.com" isExternal>
-                <Icon as={FaInstagram} w={8} h={8} color="pink" _hover={{ transform: "scale(1.1)" }} />
-              </Link>
+    <>
+      <Box as="header" bg="#fac823" boxShadow="sm" position="sticky" top={0} zIndex={10}>
+        <Container maxW="container.xl">
+          <Flex py={4} justifyContent="space-between" alignItems="center">
+            <Flex alignItems="center">
+              <Image 
+                src={logo} 
+                alt="Logo" 
+                height={{ base: '30px', md: '50px' }} // Reduz o tamanho da logo no mobile
+                mr={2} // Espaçamento à direita da logo
+              />
+               <Divider orientation="vertical" height="40px" mx={2} borderColor="black" />
+              <Heading as="h1" size={{ base: 'md', md: 'lg' }} color="black">
+                Cyberene
+              </Heading>
             </Flex>
-          </Box>
-        </Flex>
-      </Container>
-
-      {/* SVG com ondas na parte inferior */}
-      <Box position="absolute" bottom={-5} left={0} right={0}>
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 43.3C1200 47 1320 53 1380 56.7L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
-            fill="white"
-          />
-        </svg>
+            
+            <Flex display={{ base: 'none', md: 'flex' }}>
+              {['About', 'Events', 'Projects', 'Team', 'Contact'].map((item) => (
+                <Link 
+                  key={item} 
+                  href={`#${item.toLowerCase()}`} 
+                  mx={3} 
+                  fontWeight="medium" 
+                  color="black"
+                  _hover={{ textDecoration: 'underline', color: 'blue.300' }} // Efeito de hover
+                >
+                  {item}
+                </Link>
+              ))}
+            </Flex>
+            <IconButton
+              aria-label="Open menu"
+              icon={<HamburgerIcon />}
+              display={{ base: 'flex', md: 'none' }}
+              onClick={onOpen}
+              bg={"yellow"}
+              color="black"
+              _hover={{ bg: 'gray.700' }} // Efeito de hover para o botão
+            />
+          </Flex>
+        </Container>
       </Box>
-    </Box>
+
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Menu</DrawerHeader>
+          <DrawerBody>
+            <VStack spacing={4} align="stretch">
+              {['About', 'Events', 'Projects', 'Team', 'Contact'].map((item) => (
+                <Link 
+                  key={item} 
+                  href={`#${item.toLowerCase()}`} 
+                  onClick={onClose} 
+                  color="black" 
+                  _hover={{ textDecoration: 'underline', color: 'blue.300' }} // Efeito de hover
+                >
+                  {item}
+                </Link>
+              ))}
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 }

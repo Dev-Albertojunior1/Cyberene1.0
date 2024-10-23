@@ -9,11 +9,14 @@ interface Member {
 }
 
 const clubMembers: Member[] = [
-  { id: 1, name: "John Doe", role: "Presidente", imageUrl: "/placeholder.svg?height=100&width=100" },
-  { id: 2, name: "Jane Smith", role: "Vice-Presidente", imageUrl: "/placeholder.svg?height=100&width=100" },
-  { id: 3, name: "Mike Brown", role: "Secretário", imageUrl: "/placeholder.svg?height=100&width=100" },
-  { id: 4, name: "Sarah Wilson", role: "Tesoureira", imageUrl: "/placeholder.svg?height=100&width=100" },
-  { id: 5, name: "Tom Davis", role: "Diretor de Eventos", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 1, name: "Jonah Marwa", role: "Patron", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 2, name: "Emmanuel", role: "Chairman", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 3, name: "Roselyn", role: "vice chair", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 4, name: "Alberto Junior", role: "CIA", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 5, name: "Prudence", role: "Secretary", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 6, name: "Stan", role: "Tech.Lead", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 7, name: "Fidel", role: "Communication", imageUrl: "/placeholder.svg?height=100&width=100" },
+  { id: 8, name: "Jeff", role: "Tresure", imageUrl: "/placeholder.svg?height=100&width=100" },
 ];
 
 const MemberCard: React.FC<{ member: Member }> = ({ member }) => (
@@ -39,7 +42,7 @@ export default function ClubFamilyTree() {
   return (
     <Box p={4} bg="gray.100" minH="100vh">
       <Heading as="h1" size="xl" mb={8} textAlign="center">
-        Árvore Familiar do Clube
+        Team
       </Heading>
       <Flex direction="column" align="center" maxW="4xl" mx="auto">
         {/* Cartão do Presidente */}

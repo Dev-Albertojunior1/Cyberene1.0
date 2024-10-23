@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Container, Heading, Text, Button, Flex, Icon, Link, Image } from '@chakra-ui/react';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import logo from "../images/logo.png";
-import { useSpring, animated } from 'react-spring';
+import { motion } from 'framer-motion';
 
 const texts = [
   "Empowering the next generation of tech innovators",
@@ -10,25 +10,19 @@ const texts = [
   "Building a better tomorrow with technology",
   "Join us in the journey of digital transformation"
 ];
+               
+// Criando um componente animado que utiliza o Chakra Text
+const AnimatedText = motion(Text);
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
 
-  // Controla o índice do texto
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setInterval(() => {   
       setIndex((prevIndex) => (prevIndex + 1) % texts.length);
     }, 3000); // Troca a cada 3 segundos
     return () => clearInterval(interval);
   }, []);
-
-  // Animação do texto
-  const props = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-    reset: true,
-    config: { duration: 500 }
-  });
 
   return (
     <Box bg="#ff0000" color="white" py={{ base: 12, md: 48 }} position="relative">
@@ -39,7 +33,6 @@ export default function Hero() {
           justifyContent="space-between"
           mt={{ base: -10, md: 0 }}
         >
-          {/* Imagem à esquerda */}
           <Box 
             flex="1" 
             display="flex"
@@ -54,16 +47,20 @@ export default function Hero() {
             />
           </Box>
 
-          {/* Conteúdo textual à direita */}
           <Box flex="1" textAlign={{ base: "center", md: "left" }}>
             <Heading as="h2" size="3xl" mb={4}>
               Welcome to Cyberene
             </Heading>
-            <animated.div style={props}>
-              <Text fontSize={{ base: 'xl', md: '2xl' }} mb={8}>
-                {texts[index]}
-              </Text>
-            </animated.div>
+            <AnimatedText 
+              fontSize={{ base: 'xl', md: '2xl' }} 
+              mb={8}
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
+              transition={{ duration: 0.5 }} // Duração da animação
+            >
+              {texts[index]}
+            </AnimatedText>
             <Button
               size="lg"
               bg="black"
@@ -76,7 +73,6 @@ export default function Hero() {
               Join Us
             </Button>
 
-            {/* Ícones de redes sociais com links */}
             <Flex 
               justify={{ base: "center", md: "flex-start" }} 
               mt={6} 
