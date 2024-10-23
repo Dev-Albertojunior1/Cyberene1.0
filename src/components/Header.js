@@ -26,7 +26,7 @@ export default function Header() {
   const handleScroll = (event, targetId) => {
     event.preventDefault(); // Previne o comportamento padrão do link
     const targetElement = document.getElementById(targetId);
-    if (targetElement) {
+    if (targetElement) {    
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       onClose(); // Fecha o menu do drawer após clicar
     }
