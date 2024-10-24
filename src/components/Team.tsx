@@ -22,6 +22,8 @@ const clubMembers: Member[] = [
 const MemberCard: React.FC<{ member: Member }> = ({ member }) => (
   <Box
     textAlign="center"
+    as="section"
+     id="Team"
     p={4}
     bg="white"
     borderRadius="lg"

@@ -51,7 +51,7 @@ export default function Header() {
             </Flex>
             
             <Flex display={{ base: 'none', md: 'flex' }}>
-              {['About', 'Events', 'Projects', 'Team', 'Contact'].map((item) => (
+              {['About', 'Events', 'Projects',].map((item) => (
                 <Link 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 
@@ -85,7 +85,7 @@ export default function Header() {
           <DrawerHeader>Menu</DrawerHeader>
           <DrawerBody>
             <VStack spacing={4} align="stretch">
-              {['About', 'Events', 'Projects', 'Team', 'Contact'].map((item) => (
+              {['About', 'Events', 'Projects', ].map((item) => (
                 <Link 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 

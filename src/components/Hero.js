@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Container, Heading, Text, Button, Flex, Icon, Link, Image } from '@chakra-ui/react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { Box, Container, Heading, Text, Button, Flex, Icon, Link, Image,IconButton } from '@chakra-ui/react';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import logo from "../images/logo.png";
+import logo1 from "../images/logo-removebg-preview.png"
 import { motion } from 'framer-motion';
 
 const texts = [
@@ -25,13 +26,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <Box bg="#ff0000" color="white" py={{ base: 12, md: 48 }} position="relative">
+    <Box bg="#CA1A00" color="white" py={{ base: 12, md: 48 }} position="relative">
       <Container maxW="container.xl" textAlign="center">
         <Flex
           flexDirection={{ base: "column", md: "row" }}
           alignItems="center"
           justifyContent="space-between"
-          mt={{ base: -10, md: 0 }}
+          mt={{ base: -10, md: -8 }}
         >
           <Box 
             flex="1" 
@@ -40,7 +41,7 @@ export default function Hero() {
             mb={{ base: 0, md: 0 }}
           >
             <Image 
-              src={logo}
+              src={logo1}
               alt="Imagem Descritiva"
               maxW={{ base: "80%", md: "400px" }}
               borderRadius="md"
@@ -78,15 +79,26 @@ export default function Hero() {
               mt={6} 
               gap={4}
             >
-              <Link href="https://www.facebook.com" isExternal>
-                <Icon as={FaFacebook} w={8} h={8} color="#4267B2" _hover={{ transform: "scale(1.1)" }} />
-              </Link>
+              
               <Link href="https://www.twitter.com" isExternal>
-                <Icon as={FaTwitter} w={8} h={8} color="#1DA1F2" _hover={{ transform: "scale(1.1)" }} />
+                <Icon as={FaLinkedin} w={8} h={8} color="#1DA1F2" _hover={{ transform: "scale(1.1)" }} />
               </Link>
-              <Link href="https://www.instagram.com" isExternal>
+              <Link href="https://www.instagram.com/_cyberene?igsh=aWNub3RwM2c5ZzBp" isExternal>
                 <Icon as={FaInstagram} w={8} h={8} color="pink" _hover={{ transform: "scale(1.1)" }} />
               </Link>
+
+              {/* Botão de email */}
+            <Link href="mailto:email@example.com"> {/* Substitua pelo seu endereço de email */}
+              <IconButton 
+                aria-label="Email" 
+                w={8} h={8}
+                icon={<FaEnvelope />} 
+                borderRadius="full" 
+                bg="transparent"
+                color="white"
+                _hover={{ transform: "scale(1.1)" }} // Cor do Email
+              />
+            </Link>
             </Flex>
           </Box>
         </Flex>

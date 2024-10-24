@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box, Container, Flex, Heading, Text, Stack, IconButton, Link } from '@chakra-ui/react'
-import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import React from 'react';
+import { Box, Container, Flex, Heading, Text, Stack, IconButton, Link } from '@chakra-ui/react';
+import { FaTwitter, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa'; // Adicionado FaEnvelope para o ícone de email
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
         <Flex direction={{ base: 'column', md: 'row' }} justifyContent="space-between" alignItems="center">
           <Box mb={{ base: 4, md: 0 }}>
             <Heading as="h3" size="lg" mb={2}>
-              IT Club
+              Cyberene
             </Heading>
             <Text fontSize="sm">Empowering the next generation of tech innovators</Text>
           </Box>
@@ -24,17 +24,7 @@ export default function Footer() {
                 _hover={{ bg: "#1DA1F2", color: 'white' }} // Cor do Twitter
               />
             </Link>
-            <Link href="https://facebook.com" isExternal>
-              <IconButton 
-                aria-label="Facebook" 
-                icon={<FaFacebook />} 
-                borderRadius="full" 
-                bg="black"
-                color="white"
-                _hover={{ bg: "#1877F2", color: 'white' }} // Cor do Facebook
-              />
-            </Link>
-            <Link href="https://instagram.com" isExternal>
+            <Link href="https://www.instagram.com/_cyberene?igsh=aWNub3RwM2c5ZzBp" isExternal>
               <IconButton 
                 aria-label="Instagram" 
                 icon={<FaInstagram />} 
@@ -54,12 +44,23 @@ export default function Footer() {
                 _hover={{ bg: "#0077B5", color: 'white' }} // Cor do LinkedIn
               />
             </Link>
+            {/* Botão de email */}
+            <Link href="mailto:email@example.com"> {/* Substitua pelo seu endereço de email */}
+              <IconButton 
+                aria-label="Email" 
+                icon={<FaEnvelope />} 
+                borderRadius="full" 
+                bg="black"
+                color="white"
+                _hover={{ bg: "#FF4500", color: 'white' }} // Cor do Email
+              />
+            </Link>
           </Stack>
         </Flex>
         <Text mt={8} textAlign="center" fontSize="sm">
-          &copy; {new Date().getFullYear()} IT Club. All rights reserved.
+          &copy; {new Date().getFullYear()} Alberto Junior. All rights reserved.
         </Text>
       </Container>
     </Box>
-  )
+  );
 }
