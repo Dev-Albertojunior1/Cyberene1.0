@@ -14,16 +14,6 @@ export default function Footer() {
             <Text fontSize="sm">Empowering the next generation of tech innovators</Text>
           </Box>
           <Stack direction="row" spacing={4}>
-            <Link href="https://twitter.com" isExternal>
-              <IconButton 
-                aria-label="Twitter" 
-                icon={<FaTwitter />} 
-                borderRadius="full" 
-                bg="black"
-                color="white"
-                _hover={{ bg: "#1DA1F2", color: 'white' }} // Cor do Twitter
-              />
-            </Link>
             <Link href="https://www.instagram.com/_cyberene?igsh=aWNub3RwM2c5ZzBp" isExternal>
               <IconButton 
                 aria-label="Instagram" 
