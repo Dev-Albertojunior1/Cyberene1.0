@@ -45,7 +45,7 @@ export default function Footer() {
               />
             </Link>
             {/* Botão de email */}
-            <Link href="mailto:email@example.com"> {/* Substitua pelo seu endereço de email */}
+            <Link href="mailto:cyberene@anu.ac.ke"> {/* Substitua pelo seu endereço de email */}
               <IconButton 
                 aria-label="Email" 
                 icon={<FaEnvelope />} 
