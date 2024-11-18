@@ -8,6 +8,7 @@ export default function Contact() {
         <Heading as="h2" size="xl" mb={8} textAlign="center">
           Contact Us
         </Heading>
+
         <Box maxW="md" mx="auto">
           <VStack as="form" spacing={4}>
             <Input placeholder="Your Name" required />
